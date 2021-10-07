@@ -5,6 +5,20 @@ The code has been tested on Ubuntu 18.04/16.04 with Tensorflow 1.14 and Spinning
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4009286.svg)](https://doi.org/10.5281/zenodo.4009286)
 
+## Citing RLScheduler
+The relevant research paper has been published at SC20. If you reference or use RLScheduler in your research, please cite:
+
+```
+@inproceedings{zhang2020rlscheduler,
+  title={RLScheduler: an automated HPC batch job scheduler using reinforcement learning},
+  author={Zhang, Di and Dai, Dong and He, Youbiao and Bao, Forrest Sheng and Xie, Bing},
+  booktitle={SC20: International Conference for High Performance Computing, Networking, Storage and Analysis},
+  pages={1--15},
+  year={2020},
+  organization={IEEE}
+}
+```
+
 ## Installation
 
 ### Required Software
@@ -78,7 +92,7 @@ It will plot the training curve.
 After RLScheduler converges, you can test the result and compare it with different policies such as FCFS, SJF, WFP3, UNICEP, and F1.
 
 ```bash
-python compare-pick-jobs.py --rlmodel "./data/logs/your-exp-name/your-exp-name_s0/" --workload "./data/lublin_256.swf --len 2048 --iter 10"
+python compare-pick-jobs.py --rlmodel "./data/logs/your-exp-name/your-exp-name_s0/" --workload "./data/lublin_256.swf" --len 2048 --iter 10
 ```
 There are many parameters you can use:
 * `--seed`, the seed for random sampling
@@ -154,3 +168,9 @@ python make_table_script.py --score_type "utilization"
 | SDSC-SP2            | 0.682 | 0.681 | 0.706 | 0.661 | 0.677 | **0.707** |
 | HPC2N               | 0.639 | 0.637 | 0.638 | 0.641 | 0.638 | **0.642** |
 | Lublin-2            | 0.587 | 0.583 | 0.587 | 0.593 | 0.552 | **0.593** |
+
+
+## Fairness
+
+We put the code associated with fairness in these files: `HPCEnvFair.py, rl-fair.py, compare-fair.py` which are the
+counterparts of `HPCSimPickJobs.py, ppo-pick-jobs.py, compare-pick-jobs.py`. You can train, monitor and test similarly.
